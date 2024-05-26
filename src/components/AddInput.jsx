@@ -24,7 +24,7 @@ const AddInput = ({currentCityFun}) => {
           type="text"
         />
       </div>
-        <button
+      <button
         onClick={cityAddHandle}
         className=" text-blue-500 w-1/12 text-2xl flex items-center justify-center bg-blue-200 px-8 rounded-lg py-"
       >

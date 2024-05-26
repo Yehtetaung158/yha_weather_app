@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { MdOutlineArrowBackIos } from "react-icons/md";
+import React, { useEffect, useState } from "react";
 import { RiMenuAddFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import AddInput from "../components/AddInput";
 import CityList from "../components/CityList";
 import { useGetCurrentByCityMutation } from "../store/service/endpiont/weatherendpoint";
+import RfreshnadBack from "../components/RfreshnadBack";
+import { addObjectToLocalStorage } from "../store/service/onobyoneservice";
 
 const AddPage = () => {
   const [isAddCity, setIsAddCity] = useState(true);
@@ -16,9 +17,17 @@ const AddPage = () => {
 
 //   auth 
 
-  const [currentCityFun,currentWeather]=useGetCurrentByCityMutation()
+  const [currentCityFun,{data,isError,isLoading}]=useGetCurrentByCityMutation()
 
-  console.log(currentWeather)
+  console.log(data,isError,isLoading)
+  const currentData = data?.data[0];
+  
+
+  useEffect(() => {
+    if (currentData) {
+      addObjectToLocalStorage(currentData);
+    }
+  }, [data]);
 
   return (
     <div
@@ -41,17 +50,7 @@ const AddPage = () => {
       <div className=" w-full flex items-center py-2">
         {isAddCity ? (
           <>
-            <button
-              onClick={() => {
-                nav("/");
-                setIsAddCity(false);
-                console.log(isAddCity);
-              }}
-              className=" flex gap-2 py-2"
-            >
-              <MdOutlineArrowBackIos className=" text-white text-3xl" />
-              <h1 className=" text-white text-2xl">Home</h1>
-            </button>
+            <RfreshnadBack/>
           </>
         ) : (
           <AddInput currentCityFun={currentCityFun}/>
