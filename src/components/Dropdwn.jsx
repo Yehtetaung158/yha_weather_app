@@ -14,7 +14,7 @@ const Dropdwn = ({i,array,setLoading,loading}) => {
     const deleteHandle=()=>{
         const currentIndex=array.indexOf(i)
         // const currentCity=array.find((j)=>array.indexOf(j)===currentIndex)
-        console.log("current index",currentIndex ," //" ,currentCity)
+        // console.log("current index",currentIndex ," //" ,currentCity)
         array.splice(currentIndex,1)
         localStorage.setItem("myArray", JSON.stringify(array));
         // seRf(!rf)

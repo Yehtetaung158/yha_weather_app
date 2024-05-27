@@ -1,11 +1,11 @@
 import React from "react";
 
-const TodayWeather = () => {
+const TodayWeather = ({hourly}) => {
   return (
     <div className=" w-full">
       {/* <ScrollArea> */}
       <div
-        className=" bg-blue-500 py-2 px-2 rounded-lg flex flex-row gap-8 text-white text-xl mb-8 overflow-auto items-center justify-center "
+        className=" bg-blue-500 py-2 rounded-lg flex flex-row gap-4 text-white text-l mb-8 overflow-auto items-center justify-center "
         style={{
           scrollbarWidth: "none" /* Firefox */,
           msOverflowStyle: "none" /* Internet Explorer 10+ */,
@@ -20,51 +20,22 @@ const TodayWeather = () => {
             }
           `}
         </style>
-        <div className=" flex flex-col justify-around items-center gap-4">
-          <h1>02:00</h1>
-          <h1>icon</h1>
-          <h1>25</h1>
-        </div><div className=" flex flex-col justify-around items-center gap-4">
-          <h1>02:00</h1>
-          <h1>icon</h1>
-          <h1>25</h1>
-        </div><div className=" flex flex-col justify-around items-center gap-4">
-          <h1>02:00</h1>
-          <h1>icon</h1>
-          <h1>25</h1>
-        </div><div className=" flex flex-col justify-around items-center gap-4">
-          <h1>02:00</h1>
-          <h1>icon</h1>
-          <h1>25</h1>
-        </div><div className=" flex flex-col justify-around items-center gap-4">
-          <h1>02:00</h1>
-          <h1>icon</h1>
-          <h1>25</h1>
-        </div><div className=" flex flex-col justify-around items-center gap-4">
-          <h1>02:00</h1>
-          <h1>icon</h1>
-          <h1>25</h1>
-        </div><div className=" flex flex-col justify-around items-center gap-4">
-          <h1>02:00</h1>
-          <h1>icon</h1>
-          <h1>25</h1>
-        </div><div className=" flex flex-col justify-around items-center gap-4">
-          <h1>02:00</h1>
-          <h1>icon</h1>
-          <h1>25</h1>
-        </div><div className=" flex flex-col justify-around items-center gap-4">
-          <h1>02:00</h1>
-          <h1>icon</h1>
-          <h1>25</h1>
-        </div><div className=" flex flex-col justify-around items-center gap-4">
-          <h1>02:00</h1>
-          <h1>icon</h1>
-          <h1>25</h1>
-        </div><div className=" flex flex-col justify-around items-center gap-4">
-          <h1>02:00</h1>
-          <h1>icon</h1>
-          <h1>25</h1>
-        </div>
+        {hourly ? <>
+        
+        {hourly?.map((i,index)=>(< >
+    <div key={index} className=" flex flex-col items-center justify-start w-52">
+        <h1>{i.datetime.slice(11,14)} : 00</h1>
+        {/* <h1>{i.weather.icon}</h1> */}
+        <img className=" w-20" src={`https://cdn.weatherbit.io/static/img/icons/${i.weather.icon}.png`} alt="" />
+        <h1>{i.temp}° </h1>
+        {/* <h1>{i.weather.description}° </h1> */}
+    </div>
+    </>)
+    )}
+
+    </> :  <div className=" flex flex-col gap-4 px-2">
+        <h1 className=" m-8">Loading ....</h1>
+    </div>}
       </div>
     </div>
   );

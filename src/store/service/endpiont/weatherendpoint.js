@@ -16,8 +16,16 @@ const weatherEndpoint=weatherApi.injectEndpoints({
             }),
             providesTags:['weatherendpoint']
 
-        })
+        }),
+        getForecastByCity: builder.mutation({
+            query:(city)=>({
+                url:`forecast/daily?city=${city},NC&key=943400c9fe664449aad82d817d647579`,
+                method:"POST"
+            }),
+            providesTags:['weatherendpoint']
+
+        }),
     }),
 })
 
-export const {useGetByCityHourlyMutation,useGetCurrentByCityMutation}=weatherEndpoint;
+export const {useGetByCityHourlyMutation,useGetCurrentByCityMutation,useGetForecastByCityMutation}=weatherEndpoint;

@@ -62,8 +62,8 @@ const CityList = ({data}) => {
 {/* CitiesList */}
         {isLoading && <h1 className=' text-white text-2xl h-full w-full flex justify-center items-center'>Loading ....</h1>}
         
-            {array?.map((i)=>(
-                 <div key={i.lat} className=' rounded-lg w-full bg-blue-500 my-6 p-6 py-10 flex justify-between items-center relative'>
+            {array?.map((i,index)=>(
+                 <div key={index} className=' rounded-lg w-full bg-blue-500 my-6 p-6 py-10 flex justify-between items-center relative'>
                  <h1 className=' text-white text-3xl'>{i.city_name}</h1>
                  <h1 className=' flex flex-col gap-2 text-white justify-end items-end text-xl'>
                      <span>{i.temp}°</span>
