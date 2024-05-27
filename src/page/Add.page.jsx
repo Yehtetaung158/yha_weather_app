@@ -9,6 +9,7 @@ import { addObjectToLocalStorage } from "../store/service/onobyoneservice";
 
 const AddPage = () => {
   const [isAddCity, setIsAddCity] = useState(true);
+  const [rf, setRf] = useState(false);
   const addCityHandle = () => {
     setIsAddCity(!isAddCity);
   };
@@ -26,6 +27,7 @@ const AddPage = () => {
   useEffect(() => {
     if (currentData) {
       addObjectToLocalStorage(currentData);
+    //   setRf(rf)
     }
   }, [data]);
 
@@ -57,7 +59,7 @@ const AddPage = () => {
         )}
       </div>
 {/* Citylist  */}
-<CityList/>
+<CityList data={data}/>
 
 
 {/* spacer */}
